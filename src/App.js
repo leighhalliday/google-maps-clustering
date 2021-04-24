@@ -64,6 +64,7 @@ export default function App() {
           } = cluster.properties;
 
           if (isCluster) {
+            const markerSize = 10 + (pointCount / points.length) * 20;
             return (
               <Marker
                 key={`cluster-${cluster.id}`}
@@ -73,8 +74,10 @@ export default function App() {
                 <div
                   className="cluster-marker"
                   style={{
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`
+                    width: `${markerSize}px`,
+                    height: `${markerSize}px`,
+                    marginTop: `-${markerSize / 2}px`,
+                    marginLeft: `-${markerSize / 2}px`
                   }}
                   onClick={() => {
                     const expansionZoom = Math.min(
